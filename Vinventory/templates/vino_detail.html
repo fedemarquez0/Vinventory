@@ -1,0 +1,117 @@
+{% extends 'baseTemplate.html' %}
+
+{% block content %}
+{% load static %}
+
+<header class="site-header section-padding d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-12">
+                <h1>
+                    <span class="d-block text-primary">El vino y la música,</span>
+                    <span class="d-block text-muted">la sinfonía perfecta para tu paladar y tus oídos.</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="product-detail section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center">
+                <div class="product-thumb">
+                    <img src="/media/{{vino.imagen}}" class="img-fluid product-image" alt="">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-12">
+
+                <div class="d-flex justify-content-between">
+
+                    <br>
+                    <a style="cursor: pointer;" onclick="window.location='/vino/update/{{vino.pk}}';">
+                        <div class="text-muted">
+                            <i class="bi bi-pencil-square"></i> Modificar
+                        </div>
+                    </a>
+                    <a style="cursor: pointer;" onclick="window.location='/vino/delete/{{vino.pk}}';">
+                        <div class="text-muted">
+                            <i class="bi bi-trash3-fill"></i> Eliminar
+                        </div>
+                    </a>
+                </div>
+
+                <div class="product-info d-flex">
+                    <div>
+                        <h2 class="product-title mb-0">{{vino.nombre}}</h2>
+                    </div>
+
+                    <p class="product-price text-muted ms-auto mt-auto mb-5">${{vino.precio}}</p>
+                </div>
+
+                <div class="product-description">
+
+                    <h6 class="mb-3">Descripcion:</h6>
+
+                    <p class="lead mb-5">
+                        <span style="color: #742c44;"><b>Bodega:</b></span> {{vino.bodega}}<br>
+                        <span style="color: #742c44;"><b>Variedad:</b></span> {{vino.variedad}}<br>
+                        <span style="color: #742c44;"><b>Cosecha:</b></span> {{vino.cosecha}}<br>
+                        <span style="color: #742c44;"><b>Origen:</b></span> {{vino.origen}}
+                    </p>
+
+                    <p class="lead mb-5">
+                        <span style="color: #742c44;"><b>Codigo:</b></span> {{vino.codigo}}<br>
+                        <span style="color: #742c44;"><b>Estante:</b></span> {{vino.estante}}<br>
+                        <span style="color: #742c44;"><b>Cantidad:</b></span> {{vino.cantidad}}<br>
+                    </p>
+
+                    <p class="lead mb-5">
+                        {% if vino.cantidad > 0 %}
+                        <span class="badge bg-success">Stock</span>
+                        {% else %}
+                        <span class="badge bg-danger">Sin Stock</span>
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="col-lg-6 col-12 mt-4 mt-lg-0 mb-3">
+                    <a href="/vino/decrementar/{{vino.pk}}/" class="btn custom-btn cart-btn">Decrementar Stock</a>
+                </div>
+
+                <div class="col-md-12">
+                    <a href={{url_spotify}} class="btn btn-light" target="_blank">
+                        <i class="bi bi-spotify" style="color: #1DB954; font-size: 3rem;"></i>
+                    </a>
+                </div>
+
+                <!--Para hacer el decrementar stock asi
+                <div class="product-cart-thumb row">
+                    <div class="col-lg-6 col-12">
+
+                        <select class="form-select cart-form-select" id="inputGroupSelect01">
+                            <option selected>Quantity</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6 col-12 mt-4 mt-lg-0">
+                        <button type="submit" class="btn custom-btn cart-btn" data-bs-toggle="modal"
+                            data-bs-target="#cart-modal">Add to Cart</button>
+                    </div>
+                </div>
+                -->
+
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

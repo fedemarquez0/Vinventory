@@ -1,0 +1,106 @@
+{% extends 'baseTemplate.html' %}
+
+{% block content %}
+{% load static %}
+<section class="contact section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-12">
+        <h2 class="mb-4">Agregar <span>vino</span></h2>
+        <form method="POST" enctype="multipart/form-data" class="contact-form me-lg-5 pe-lg-3" role="form">
+          {% csrf_token %}
+
+          <!-- Campo Nombre -->
+          <div class="form-floating">
+            <input type="text" id="id_nombre" name="nombre" class="form-control" placeholder="Nombre" required>
+            <label for="id_nombre">Nombre</label>
+          </div>
+
+          <!-- Campo Bodega -->
+          <div class="form-floating my-4">
+            <select id="id_bodega" name="bodega" class="form-control" required>
+              <option value="">Seleccione una bodega</option>
+              {% for bodega in bodegas %}
+              <option value="{{ bodega.id }}">{{ bodega.bodega }}</option>
+              {% endfor %}
+            </select>
+            <label for="id_bodega">Bodega</label>
+          </div>
+
+          <!-- Campo Variedad -->
+          <div class="form-floating my-4">
+            <select id="id_variedad" name="variedad" class="form-control" required>
+              <option value="">Seleccione una variedad</option>
+              {% for variedad in variedades %}
+              <option value="{{ variedad.id }}">{{ variedad.variedad }}</option>
+              {% endfor %}
+            </select>
+            <label for="id_variedad">Variedad</label>
+          </div>
+
+          <!-- Campo Cosecha -->
+          <div class="form-floating my-4">
+            <input type="number" id="id_cosecha" name="cosecha" class="form-control" placeholder="Cosecha" required>
+            <label for="id_cosecha">Cosecha</label>
+          </div>
+
+          <!-- Campo Origen -->
+          <div class="form-floating my-4">
+            <select id="id_origen" name="origen" class="form-control" required>
+              <option value="">Seleccione un origen</option>
+              {% for origen in origenes %}
+              <option value="{{ origen.id }}">{{ origen.origen }}</option>
+              {% endfor %}
+            </select>
+            <label for="id_origen">Origen</label>
+          </div>
+
+          <!-- Campo Precio -->
+          <div class="form-floating my-4">
+            <input type="number" id="id_precio" name="precio" class="form-control" placeholder="Precio" required>
+            <label for="id_precio">Precio</label>
+          </div>
+
+          <!-- Campo Cantidad -->
+          <div class="form-floating my-4">
+            <input type="number" id="id_cantidad" name="cantidad" class="form-control" placeholder="Cantidad" required>
+            <label for="id_cantidad">Cantidad</label>
+          </div>
+
+          <!-- Campo Estante -->
+          <div class="form-floating my-4">
+            <select id="id_estante" name="estante" class="form-control" required>
+              <option value="">Seleccione un estante</option>
+              {% for estante in estantes %}
+              <option value="{{ estante.id }}">{{ estante.estante }}</option>
+              {% endfor %}
+            </select>
+            <label for="id_estante">Estante</label>
+          </div>
+
+          <!-- Campo Imagen -->
+          <div class="form-floating my-4">
+            <input type="file" id="id_imagen" name="imagen" class="form-control" accept="image/*">
+            <label for="id_cantidad">Imagen</label>
+          </div>
+
+          <!-- Campo Codigo -->
+          <div class="form-floating my-4">
+            <input type="text" id="id_codigo" name="codigo" value="{{codigo}}" class="form-control" placeholder="Codigo" readonly hidden>
+          </div>
+
+          <!-- Botón de envío -->
+          <div class="col-lg-5 col-6">
+            <button type="submit" class="form-control">Guardar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-6 col-12 mt-5 ms-auto">
+        <img src="{% static 'vinventory/img/creates/vino.jpg' %}" class="shadow-lg img-fluid" alt="vino">
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

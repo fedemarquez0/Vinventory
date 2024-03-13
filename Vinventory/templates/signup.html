@@ -1,0 +1,72 @@
+{% extends 'baseTemplate.html' %}
+
+{% block content %}
+{% load static %}
+
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+    <style>
+      .cascading-right {
+        margin-right: -50px;
+      }
+  
+      @media (max-width: 991.98px) {
+        .cascading-right {
+          margin-right: 0;
+        }
+      }
+    </style>
+  
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Sign up now</h2>
+              <form method="post">
+                {% csrf_token %}
+                
+                <!-- User input -->
+                <div class="form-outline mb-4">
+                    {{ form.username }}
+                    <label class="form-label">Usuario</label>
+                  </div>
+                
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    {{ form.email }}
+                  <label class="form-label">Email</label>
+                </div>
+  
+                <!-- Password1 input -->
+                <div class="form-outline mb-4">
+                    {{ form.password1 }}
+                  <label class="form-label">Contraseña</label>
+                </div>
+
+                <!-- Password2 input -->
+                <div class="form-outline mb-4">
+                    {{ form.password2 }}
+                    <label class="form-label">Ingrese nuevamente la contraseña</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-dark btn-block mb-4">Registrarse</button>
+              </form>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="{% static 'vinventory/img/bg-signup.jpg' %}" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% endblock %}

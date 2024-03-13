@@ -1,0 +1,39 @@
+{% extends 'baseTemplate.html' %}
+
+{% block content %}
+{% load static %}
+<section class="contact section-padding">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-6 col-12">
+        {% if 'update' in request.path %}
+        <h2 class="mb-4">Actualizar <span>estante</span></h2>
+        {% else %}
+        <h2 class="mb-4">Agregar <span>estante</span></h2>
+        {% endif %}
+
+
+        <form method="post" class="contact-form me-lg-5 pe-lg-3">
+          {% csrf_token %}
+
+          <div class="form-floating">
+            {{ form.as_p }}
+          </div>
+
+          <div class="col-lg-5 col-6">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-outline-secondary" onclick="history.back()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-6 col-12 mt-5 ms-auto">
+        <img src="{% static 'vinventory/img/creates/estante.jpg' %}" class="shadow img-fluid" alt="estante">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

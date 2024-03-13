@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="LAB-4-UBP">
+    <title>{% block title %}Vinventory{% endblock %}</title>
+
+    <!-- Archivos CSS de Bootstrap -->
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'vinventory/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vinventory/icons/bootstrap-icons/font/bootstrap-icons.css' %}">
+
+    <link rel="stylesheet" href="{% static 'vinventory/css/slick.css' %}" />
+
+    <link href="{% static 'vinventory/css/tooplate-little-fashion.css' %}" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'vinventory/img/favicon.ico' %}">
+
+</head>
+
+<body>
+    <main>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="/">
+                    <svg class="bi" width="45" height="45">
+                        <image href="{% static 'vinventory/img/logo.jpg' %}" height="40" width="40" />
+                    </svg>
+                    <strong><span>Vinven</span>Tory</strong>
+                </a>
+
+                <div class="d-lg-none">
+                    {% if user.is_authenticated %}
+                    <!-- El usuario está autenticado -->
+                    <a href="/signup" class="bi bi-person-plus custom-icon me-3"></a>
+                    <a href="{% url 'logout' %}" class="bi bi-person-x custom-icon"></a>
+                    {% else %}
+                    <!-- El usuario no está autenticado -->
+                    <a href="{% url 'login' %}" class="bi bi-person custom-icon"></a>
+                    {% endif %}
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#catalogo">Catalogo</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/bodega">Bodegas</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/variedad">Variedades</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/origen">Origenes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/estante">Estantes</a>
+                        </li>
+                    </ul>
+                    </ul>
+
+                    <div class="d-none d-lg-block">
+                        {% if user.is_authenticated %}
+                        <!-- El usuario está autenticado -->
+                        <a href="/signup" class="bi bi-person-plus custom-icon me-3"></a>
+                        <a href="{% url 'logout' %}" class="bi bi-person-x custom-icon"></a>
+                        {% else %}
+                        <!-- El usuario no está autenticado -->
+                        <a href="{% url 'login' %}" class="bi bi-person custom-icon"></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+
+    </main>
+
+
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-10 me-auto mb-4">
+                    <h4 class="text-white mb-3"><a href="/">Vinven</a>Tory</h4>
+                    <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2023 <strong>Vinventory</strong></p>
+                    <br>
+                    <p class="copyright-text">Diseñado por <a href="https://www.ubp.edu.ar/" target="_blank">Vinventory</a></p>
+                </div>
+
+                <div class="col-lg-3 col-4">
+                    <h5 class="text-white mb-3">Social</h5>
+
+                    <ul class="social-icon">
+
+                        <li><a href="https://www.facebook.com/universidadblaspascal" class="social-icon-link bi-facebook" target="_blank"></a></li>
+
+                        <li><a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fubpascal" class="social-icon-link bi-twitter" target="_blank"></a></li>
+
+                        <li><a href="https://www.instagram.com/ublaspascal/" class="social-icon-link bi-instagram" target="_blank"></a></li>
+
+                        <li><a href="https://www.youtube.com/user/ubpascal" class="social-icon-link bi-youtube" target="_blank"></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Archivos JS de jQuery y Bootstrap -->
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'vinventory/js/jquery.min.js'%}"></script>
+    <script src="{% static 'vinventory/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'vinventory/js/Headroom.js'%}"></script>
+    <script src="{% static 'vinventory/js/jQuery.headroom.js'%}"></script>
+    <script src="{% static 'vinventory/js/slick.min.js'%}"></script>
+    <script src="{% static 'vinventory/js/custom.js'%}"></script>
+    <script src="{% static 'vinventory/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
